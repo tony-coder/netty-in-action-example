@@ -12,7 +12,7 @@ import io.netty.util.CharsetUtil;
 public class EchoServerHandler extends ChannelInboundHandlerAdapter {
     @Override
     public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
-        super.channelRead(ctx, msg);
+//        super.channelRead(ctx, msg);
         ByteBuf in = (ByteBuf) msg;
         // 将消息记录到控制台
         System.out.println(
@@ -22,14 +22,14 @@ public class EchoServerHandler extends ChannelInboundHandlerAdapter {
 
     @Override
     public void channelReadComplete(ChannelHandlerContext ctx) throws Exception {
-        super.channelReadComplete(ctx);
+//        super.channelReadComplete(ctx);
         // 将未决消息冲刷到远程节点，并且关闭该 Channel
         ctx.writeAndFlush(Unpooled.EMPTY_BUFFER).addListener(ChannelFutureListener.CLOSE);
     }
 
     @Override
     public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) throws Exception {
-        super.exceptionCaught(ctx, cause);
+//        super.exceptionCaught(ctx, cause);
         cause.printStackTrace();  // 打印异常栈跟踪
         ctx.close();  // 关闭该Channel
     }
